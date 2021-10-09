@@ -1,7 +1,7 @@
 pipeline {
 agent { label "your label"}
 environment{
-DOCKERHUB_CREDENTIALS = credentials(“your username”-dockerhub')
+DOCKERHUB_CREDENTIALS = credentials(xaviertech-dockerhub')
 }
 stages {
 stage ('Build') {
