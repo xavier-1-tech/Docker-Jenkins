@@ -1,4 +1,4 @@
-FROM openjdk:16-alpine3.13
+FROM openjdk:11
 
 COPY ./demo-0.0.1-SNAPSHOT.jar /demo-0.0.1-SNAPSHOT.jar
 
