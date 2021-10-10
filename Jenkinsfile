@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'docker build -t Docker-key/javaapp .'
+                sh 'docker build -t Docker-key/javapp ./demo'
                 sh 'echo "completed build"'
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         
         stage('Push'){
             steps {
-                sh 'docker push xaviertech/javaapp:latest'
+                sh 'docker push xaviertech/javapp:latest'
                 sh 'echo "Push was successful"'
             }
         }
