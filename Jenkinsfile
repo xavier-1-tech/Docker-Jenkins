@@ -1,39 +1,31 @@
-pipeline{
-
-	agent any
-
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub-xaviertech')
-	}
-
-	stages {
-
-		stage('Build') {
-
-			steps {
-				sh 'docker build -t xaviertech/nodeapp:latest .'
-			}
-		}
-
-		stage('Login') {
-
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-		stage('Push') {
-
-			steps {
-				sh 'docker push xaviertech/nodeapp:latest'
-			}
-		}
-	}
-
-	post {
-		always {
-			sh 'docker logout'
-		}
-	}
-
+pipeline {
+    agent {
+        label "Agent1"
+    }
+    
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials("Docker-key")
+}
+    stages {
+        stage('Build') { 
+            steps { 
+                sh 'docker build -t Docker-key/javaapp .'
+                sh 'echo "completed build"'
+            }
+        }
+    
+        stage('Login') { 
+            steps { 
+              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+              sh 'echo "completed login"'
+            }
+        }
+        
+        stage('Push'){
+            steps {
+                sh 'docker push Docker-key/javaapp:latest'
+                sh 'echo "Push was successful"'
+            }
+        }
+    }
 }
