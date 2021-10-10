@@ -23,7 +23,7 @@ pipeline {
         
         stage('Push'){
             steps {
-                sh 'docker push Docker-key/javaapp:latest'
+                sh 'docker push xaviertech/javaapp:latest'
                 sh 'echo "Push was successful"'
             }
         }

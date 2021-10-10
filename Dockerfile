@@ -1,6 +1,5 @@
-FROM node:13-alpine
-RUN mkdir -p /home/app
-COPY ./* /home/app/
-WORKDIR /home/app
-RUN npm install
-CMD ["node", "server.js"]
+FROM openjdk:16-alpine3.13
+
+COPY ./demo-0.0.1-SNAPSHOT.jar /demo-0.0.1-SNAPSHOT.jar
+
+CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
